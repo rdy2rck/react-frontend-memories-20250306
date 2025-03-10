@@ -10,6 +10,7 @@
 
   background-image: url("../../assets/images/auth-side-image.png");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #auth-wrapper .auth-box {
@@ -25,26 +26,15 @@
   min-width: 610px;
 }
 
-#auth-login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-
-  width: 380px;
+#auth-wrapper .divider {
+  border-top: 1px solid var(--Lightmode-Grey3);
+  width: 64px;
 }
 
-#auth-login-container .header {
-  color: var(--Lightmode-Grey); /* App.css에 있는 글자 색상 변수 가져오기 */
-  font-size: 30px;
-  font-weight : 700;
-  line-height: 173%;
+.sns-button.kakao {
+  background-image: url('/src/assets/images/kakao.png');
 }
 
-#auth-login-container .input-container {
-  align-self: stretch;
-
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.sns-button.naver {
+  background-image: url('/src/assets/images/naver.png');
 }
