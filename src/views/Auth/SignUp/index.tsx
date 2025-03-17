@@ -1,11 +1,13 @@
 import { Address, useDaumPostcodePopup } from 'react-daum-postcode';
 
+import './style.css';
+
 import { ChangeEvent, useEffect, useState } from "react";
 import { AuthPage } from "../../../types/aliases";
 import { ResponseDto } from "../../../apis/dto/response";
-import { IdCheckRequestDto } from '../../../apis/dto/request/auth';
+import { IdCheckRequestDto, SignUpRequestDto } from '../../../apis/dto/request/auth';
 import InputBox from '../../../components/InputBox';
-import { idCheckRequest } from '../../../apis/dto';
+import { idCheckRequest, signUpRequest } from '../../../apis/dto';
 
 // interface: 회원가입 컴포넌트 속성 //
 interface Props {
@@ -72,20 +74,40 @@ export default function SignUp(props: Props) {
 
   // function: id check response 처리 함수 //
   const idCheckResponse = (responseBody: ResponseDto | null) => {
-
     const message = 
       !responseBody ? '서버에 문제가 있습니다' :
       responseBody.code === 'DBE' ? '서버에 문제가 있습니다' :
       responseBody.code === 'EU' ? '이미 사용중인 아이디입니다' :
       responseBody.code === 'VF' ? '아이디를 입력하세요' :
-      '사용 가능한 아이디입니다';
+        '사용 가능한 아이디입니다';
 
-    const isSuccess = responseBody !== null &&responseBody.code === 'SU';
-
+    const isSuccess = responseBody !== null && responseBody.code === 'SU';
 
     setUserIdMessage(message);
-    setUserIdMessageError(isSuccess);
-    setUserIdChecked(!isSuccess);
+    setUserIdMessageError(!isSuccess);
+    setUserIdChecked(isSuccess);
+  };
+
+  // function: sign up response 처리 함수 //
+  const signUpResponse = (responseBody: ResponseDto | null) => {
+    const message = 
+      !responseBody ? '서버에 문제가 있습니다' :
+      responseBody.code === 'DBE' ? '서버에 문제가 있습니다' :
+      responseBody.code === 'EU' ? '이미 사용중인 아이디입니다' :
+      responseBody.code === 'VF' ? '모두 입력해주세요' : '';
+    
+    const isSuccess = responseBody !== null && responseBody.code === 'SU';
+    if (!isSuccess) {
+      if (responseBody && responseBody.code === 'EU') {
+        setUserIdMessage(message);
+        setUserIdMessageError(true);
+        return;
+      }
+      alert(message);
+      return;
+    }
+
+    onPageChange('sign-in');
   };
 
   // event handler: 사용자 이름 변경 이벤트 처리 //
@@ -160,7 +182,11 @@ export default function SignUp(props: Props) {
     }
     if (!isSignUpButtonActive) return;
 
-    alert('회원가입이 완료되었습니다');
+    const requestBody: SignUpRequestDto = {
+      userId, userPassword, name: userName,
+      address: userAddress, detailAddress: userDetailAddress, joinType: 'NORMAL'
+    };
+    signUpRequest(requestBody).then(signUpResponse);
   };
 
   // effect: 사용자 비밀번호 또는 사용자 비밀번호 확인 변경될 시 실행할 함수 //

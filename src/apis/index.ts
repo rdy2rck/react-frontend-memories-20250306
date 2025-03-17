@@ -1,10 +1,8 @@
-import IdCheckRequestDto from "./request/auth/id-check.request.dto";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { ResponseDto } from "./dto/response";
+import { IdCheckRequestDto, SignInRequestDto, SignUpRequestDto } from "./dto/request/auth";
+import { SignInResponseDto } from "./dto/response/auth";
 
-import axios, { AxiosError, AxiosResponse } from 'axios';
-import ResponseDto from "./response/response.dto";
-import { SignUpRequestDto } from "./request/auth";
-import SignInRequestDto from "./request/auth/sign-in.request.dto";
-import { SignInResponseDto } from "./response/auth";
 
 // variable: URL 상수 //
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
