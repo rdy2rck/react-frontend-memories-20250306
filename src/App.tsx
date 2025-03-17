@@ -28,7 +28,7 @@ import { useCookies } from 'react-cookie';
 function App() {
   return (
     <Routes>
-      {/* <Route index element={<></>} /> */}
+      <Route index element={<Index />} />
       <Route path={AUTH_PATH} element={<Auth />} />
 
       <Route element={<Layout />}>

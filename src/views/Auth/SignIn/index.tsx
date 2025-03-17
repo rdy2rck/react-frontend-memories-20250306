@@ -3,12 +3,12 @@ import { useCookies } from 'react-cookie';
 import './style.css';
 import InputBox from '../../../components/InputBox';
 import { AuthPage } from '../../../types/aliases';
-import { signInRequest } from '../../../apis/dto';
 import { SignInRequestDto } from '../../../apis/dto/request/auth';
 import { SignInResponseDto } from '../../../apis/dto/response/auth';
 import { useNavigate } from 'react-router';
 import { ResponseDto } from '../../../apis/dto/response';
 import { ACCESS_TOKEN, MAIN_ABSOLUTE_PATH, ROOT_PATH } from '../../../constants';
+import { signInRequest } from '../../../apis';
 
 // interface: 로그인 컴포넌트 속성 //
 interface Props {
@@ -67,7 +67,7 @@ export default function SignIn(props: Props) {
     setUserPassword(value);
   };
 
-  // event handler: 로그인 버튼 클릭 이벤트 처리 //\
+  // event handler: 로그인 버튼 클릭 이벤트 처리 //
   const onLoginButtonClick = () => {
     if (!userId) setUserIdMessage('아이디를 입력하세요');
     if (!userPassword) setUserPasswordMessage('비밀번호를 입력하세요');
@@ -77,6 +77,11 @@ export default function SignIn(props: Props) {
       userId, userPassword
     }
     signInRequest(requestBody).then(signInResponse)
+  };
+
+  // event handler: sns 로그인 버튼 클릭 이벤트 처리 //
+  const onSnsButtonClickHanlder = (sns: 'kakao' | 'naver') => {
+    window.location.href = `http://localhost:4000/api/v1/auth/sns/${sns}`;
   };
 
   // effect: 아이디 혹은 비밀번호 변경 시 실행할 함수 //
@@ -101,8 +106,8 @@ export default function SignIn(props: Props) {
       <div className='sns-container'> {/* SNS 로그인 버튼 배치하는 곳 */}
         <div className='sns-header'>SNS 로그인</div>
         <div className='sns-button-box'> {/* SNS 로그인 페이지 전환 버튼 */}
-          <div className='sns-button kakao'></div> {/* 카카오 SNS 로그인 버튼 */}
-          <div className='sns-button naver'></div> {/* 네이버 SNS 로그인 버튼 */}
+          <div className='sns-button kakao' onClick={() => onSnsButtonClickHanlder('kakao')}></div> {/* 카카오 SNS 로그인 버튼 */}
+          <div className='sns-button naver' onClick={() => onSnsButtonClickHanlder('naver')}></div> {/* 네이버 SNS 로그인 버튼 */}
         </div>
       </div>
     </div>
