@@ -43,8 +43,12 @@ body { /* 웹페이지 폰트 설정 */
 
 .button.fullwidth {
   box-sizing : border-box;
-
   width : 100%;
+}
+
+.button.middle {
+  box-sizing: border-box;
+  width: 144px;
 }
 
 .button.disable { /* 비활성화 상태인 버튼의 색상 */
