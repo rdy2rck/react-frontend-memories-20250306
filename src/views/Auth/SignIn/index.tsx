@@ -8,7 +8,7 @@ import { SignInResponseDto } from '../../../apis/dto/response/auth';
 import { useNavigate } from 'react-router';
 import { ResponseDto } from '../../../apis/dto/response';
 import { ACCESS_TOKEN, MAIN_ABSOLUTE_PATH, ROOT_PATH } from '../../../constants';
-import { signInRequest } from '../../../apis';
+import { signInRequest, SNS_SIGN_IN_URL } from '../../../apis';
 
 // interface: 로그인 컴포넌트 속성 //
 interface Props {
@@ -81,7 +81,7 @@ export default function SignIn(props: Props) {
 
   // event handler: sns 로그인 버튼 클릭 이벤트 처리 //
   const onSnsButtonClickHanlder = (sns: 'kakao' | 'naver') => {
-    window.location.href = `http://localhost:4000/api/v1/auth/sns/${sns}`;
+    window.location.href = SNS_SIGN_IN_URL(sns);
   };
 
   // effect: 아이디 혹은 비밀번호 변경 시 실행할 함수 //
