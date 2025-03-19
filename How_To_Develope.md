@@ -68,3 +68,51 @@
 2. index.tsx에서 일기 메인화면(DiaryMain) 컴포넌트를 생성 후 App.css에 DiaryMain으로 페이지 경로를 설정
 3. style.css에서 index.tsx에서 설정한 컴포넌트들의 스타일을 지정
 4. 내비게이터 함수 설정 후 onWriteButtonClickHandler 이벤트 처리 생성 후 '작성하기' 버튼에 onClick 이벤트 설정
+
+## 일기 테이블 작성 (2025-03-19)
+1. index.tsx에 테이블을 작성하기 위한 diary-list-table 컴포넌트 생성
+2. style.css에 diary-list-table 컴포넌트의 스타일 지정
+3. index.tsx에서 테이블의 세부 컬럼 분류를 위한 diary-list-table의 하위 컴포넌트 "td", "tr", "th" 생성, 또한 제목 컬럼을 위한 별개의 컴포넌트 "title" 역시 생성
+4. style.css에서 3번에서 생성한 컴포넌트의 스타일 지정
+
+## 일기 테이블 보기 작성
+1. 일기 테이블 레코드 컴포넌트 fuction TableItem() {~} 생성 & 렌더링, 날짜, 제목, 날씨, 행복 컬럼 생성
+2. 일기 목록을 관리하는 일기 메인 화면 컴포넌트 DiaryMain 생성, 전체 일기 목록(totaList), 전체 일기 갯수(totalCount), 총 페이지 수(totalPage), 페이지 그룹 설정(totalSection), 현재 페이지 번호(currentPage), 현재 페이지에서 보이는 일기 목록(viewList) 설정
+3. 
+4. 
+
+## 페이지 리스트 목차 생성 & 기능 구현
+1. 
+2. 
+3. 
+4. 
+5. 
+
+## 페이지 관련 훅 함수 & 컴포넌트 정리
+1. 
+2. 
+3. 
+4. 
+
+## 등록한 일기를 DB 테이블에 연동
+1. 
+2. 
+3. 
+4. 
+
+## 테이블에 기분 & 날씨 아이콘 등록 & 출력
+1. assets/images 폴더 안에 기분 & 날씨 아이콘 저장
+2. 
+3. App.css 파일에 기분 아이콘 기본 & 활성화 등록
+4. 
+5. App.css 파일에 날씨 아이콘 기본 & 활성화 등록
+
+## 일기 작성 페이지 생성
+1. views/Diary 폴더 아래에 Write 폴더 생성 후 index.tsx & style.css 파일 생성
+2. App.tsx 폴더의 일기 작성 페이지 경로에 DiaryWrite로 경로 설정
+3. Diary/Write 폴더의 index.tsx에 페이지 컴포넌트 생성
+4. 같은 폴더의 style.css에 컴포넌트 스타일 설정
+5. index.tsx 파일에서 '@tiptap/starter-kit'와 'EditorProvider', 'FloatingMenu', 'BubbleMenu' 설치 후 임포트
+6. components 폴더 아래에 TextEditor 폴더 생성 후 index.tsx 생성하여 tiptap Text Editor와 Text Editor Menu Bar 컴포넌트 생성 후 렌더링
+7. 
+8. Diary/Write 폴더에 style.scss 파일 생성 후 컴포넌트 스타일 설정. 이후 터미널에 npm install sass 입력 후 설치
