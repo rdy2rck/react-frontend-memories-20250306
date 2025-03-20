@@ -23,7 +23,7 @@ export const CONCENTRATION_TEST_COMPLETE_ABSOLUTE_PATH = `${ROOT_PATH}${CONCENTR
 export const DIARY_ABSOLUTE_PATH = `${ROOT_PATH}${DIARY_PATH}`;
 export const DIARY_WRITE_ABSOLUTE_PATH = `${ROOT_PATH}${DIARY_PATH}/${DIARY_WRITE_PATH}`;
 export const DIARY_VIEW_ABSOLUTE_PATH = (diaryNumber: number | string) => `${ROOT_PATH}${DIARY_PATH}/${diaryNumber}`;
-export const DIARY_UPDATE_ABSOLUTE_PATH = (diaryNumber: number | string) => `${ROOT_PATH}${DIARY_UPDATE_PATH}/${diaryNumber}`;
+export const DIARY_UPDATE_ABSOLUTE_PATH = (diaryNumber: number | string) => `${ROOT_PATH}${DIARY_PATH}/${diaryNumber}/${DIARY_UPDATE_PATH}`;
 
 // variable: access token 속성명 //
 export const ACCESS_TOKEN = 'accessToken';
