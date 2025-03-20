@@ -108,4 +108,6 @@
 5. index.tsx 파일에서 '@tiptap/starter-kit'와 'EditorProvider', 'FloatingMenu', 'BubbleMenu' 설치 후 임포트
 6. components 폴더 아래에 TextEditor 폴더 생성 후 index.tsx 생성하여 tiptap Text Editor와 Text Editor Menu Bar 컴포넌트 생성 후 렌더링
 
-## 일기 
+## 날씨 & 기분 변경 기능
+
+## 제목 입력 처리 & 작성 완료 버튼 추가
