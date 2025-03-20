@@ -78,23 +78,19 @@
 ## 일기 테이블 보기 작성
 1. 일기 테이블 레코드 컴포넌트 fuction TableItem() {~} 생성 & 렌더링, 날짜, 제목, 날씨, 행복 컬럼 생성
 2. 일기 목록을 관리하는 일기 메인 화면 컴포넌트 DiaryMain 생성, 전체 일기 목록(totaList), 전체 일기 갯수(totalCount), 총 페이지 수(totalPage), 페이지 그룹 설정(totalSection), 현재 페이지 번호(currentPage), 현재 페이지에서 보이는 일기 목록(viewList) 설정
-3. 
-4. 
+3. '전체 리스트 변경 함수'와 '뷰 리스트 변경 함수', '전체 리스트가 변경되면 실행할 함수'와 '현재 페이지가 변경되면 실행할 함수', '현재 섹션이 변경되면 실행할 함수' 작성
 
-## 페이지 리스트 목차 생성 & 기능 구현
-1. 
-2. 
-3. 
-4. 
-5. 
+## 페이지 넘기기 버튼 생성 & 기능 구현
+1. index.tsx에 페이지 넘기기 버튼을 구현할 컴포넌트 'pagination-container' 생성, 이후 'pagination-box', 'pagination-button left', 'pagination-button right' 등의 각종 기능을 구현하는 하위 컴포넌트 생성
+2. style.css에 해당 컴포넌트들의 스타일 지정
 
 ## 페이지 관련 훅 함수 & 컴포넌트 정리
-1. 
-2. 
-3. 
-4. 
+1. Diary/index.tsx 파일에서 일기 메인 화면 컴포넌트의 '페이지네이션 관련 상태', '전체 리스트 변경 함수', '뷰 리스트 변경 함수', '페이지 리스트 변경 함수', '전체 리스트가 변경되면 실행할 함수'와 '현재 페이지가 변경되면 실행할 함수', '현재 섹션이 변경되면 실행할 함수'를 hooks/pagination.hook.ts 파일 생성 후 이동
+2. 이후 hooks/index.ts 파일 생성 후 hooks/pagination.hook.ts 파일 임포트
+3. components/Pagination/index.tsx 파일 생성 후 Diary/index.tsx의 '페이지네이션 컴포넌트 속성' 인터페이스 작성한 뒤 '페이지 클래스', '페이지네이션 컴포넌트 렌더링'을 이 파일로 옮기기. 이후 '페이지네이션 컴포넌트', '페이지 변경 이벤트 처리', '이전 섹션 클릭 이벤트 처리', '다음 섹션 클릭 이벤트 처리'를 작성
+4. 이후 components/Pagination/style.css 파일을 생성 후 Diary/style.css에 있는 pagination 관련 스타일 지정 코드들을 components/Pagination/style.css로 옮기기
 
-## 등록한 일기를 DB 테이블에 연동
+## 등록한 일기를 DB 테이블에 연동(2025-03-19 14:50 커밋 참조)
 1. 
 2. 
 3. 
@@ -102,17 +98,14 @@
 
 ## 테이블에 기분 & 날씨 아이콘 등록 & 출력
 1. assets/images 폴더 안에 기분 & 날씨 아이콘 저장
-2. 
-3. App.css 파일에 기분 아이콘 기본 & 활성화 등록
-4. 
-5. App.css 파일에 날씨 아이콘 기본 & 활성화 등록
+3. App.css 파일에 기분 & 날씨 아이콘 기본 & 활성화 등록
 
-## 일기 작성 페이지 생성
+## 일기 작성 페이지 생성 (2025-03-19 15:50 커밋 참조)
 1. views/Diary 폴더 아래에 Write 폴더 생성 후 index.tsx & style.css 파일 생성
 2. App.tsx 폴더의 일기 작성 페이지 경로에 DiaryWrite로 경로 설정
 3. Diary/Write 폴더의 index.tsx에 페이지 컴포넌트 생성
 4. 같은 폴더의 style.css에 컴포넌트 스타일 설정
 5. index.tsx 파일에서 '@tiptap/starter-kit'와 'EditorProvider', 'FloatingMenu', 'BubbleMenu' 설치 후 임포트
 6. components 폴더 아래에 TextEditor 폴더 생성 후 index.tsx 생성하여 tiptap Text Editor와 Text Editor Menu Bar 컴포넌트 생성 후 렌더링
-7. 
-8. Diary/Write 폴더에 style.scss 파일 생성 후 컴포넌트 스타일 설정. 이후 터미널에 npm install sass 입력 후 설치
+
+## 일기 

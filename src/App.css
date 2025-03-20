@@ -115,7 +115,7 @@ body { /* 웹페이지 폰트 설정 */
 }
 
 .feeling-icon.angry {
-  background-image: url('../src/assets/images/angry-active.png');
+  background-image: url('../src/assets/images/angry.png');
 }
 
 .feeling-icon.normal-active {

@@ -82,6 +82,6 @@ function Index() {
     }
   }, []);
 
-  // render: Root 경로 컴포넌트 //
+  // render: Root 경로 컴포넌트 렌더링 //
   return null;
 }

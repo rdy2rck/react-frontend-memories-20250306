@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const ITEMS_PER_PAGES = 10;
+const ITEMS_PER_PAGE = 10;
 const PAGES_PER_SECTION = 10;
 
 const usePagination = <T>() => {
@@ -17,7 +17,7 @@ const usePagination = <T>() => {
     // function: 전체 리스트 변경 함수 /
   const init = (totalList: T[]) => {
     const totalCount = totalList.length;
-    const totalPage = Math.ceil(totalCount / ITEMS_PER_PAGES);
+    const totalPage = Math.ceil(totalCount / ITEMS_PER_PAGE);
     setTotalPage(totalPage);
     const totalSection = Math.ceil(totalPage / PAGES_PER_SECTION);
     setTotalSection(totalSection);
@@ -29,8 +29,8 @@ const usePagination = <T>() => {
   // function: 뷰 리스트 변경 함수 //
   const initViewList = (totalList: T[]) => {
     const totalCount = totalList.length;
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGES;
-    const endIndex = currentPage * ITEMS_PER_PAGES > totalCount ? totalCount : currentPage * ITEMS_PER_PAGES;
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = currentPage * ITEMS_PER_PAGE > totalCount ? totalCount : currentPage * ITEMS_PER_PAGE;
     const viewList: T[] = totalList.slice(startIndex, endIndex);
     setViewList(viewList);
   };
@@ -40,7 +40,7 @@ const usePagination = <T>() => {
     const startPage = PAGES_PER_SECTION * currentSection - (PAGES_PER_SECTION -1);
     const endPage = PAGES_PER_SECTION * currentSection > totalPage ? totalPage : PAGES_PER_SECTION * currentSection;
     const pageList = [];
-    for (let page = startPage; page <= endPage ; page++) {
+    for (let page = startPage; page <= endPage; page++) {
       pageList.push(page);
     }
     setPageList(pageList);
