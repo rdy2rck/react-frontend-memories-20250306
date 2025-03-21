@@ -140,9 +140,31 @@
 3. MemoryTest/style.css
 4. interfaces/memory-card.interface.ts
 5. interfaces/index.ts
+6. request/test/post-memory.request.dto.ts
+7. request/test/index.ts
+8. interfaces/memory-test.interfaces
+9. response/test/index.ts
+10. response/test/get-memory-response.dto.ts
+11. apis/index.ts
 
 1. 페이지 생성, 컴포넌트 스타일 설정
 2. 경로 설정
 3. '검사 시작' 버튼 클릭 시 3초 간 대기 후 시간 측정 시작
 4. 기억력 검사용 메모리 검사 카드 UI(뒤집힌 상태 & 펼친 상태) 생성 및 배치
 5. 메모리 검사 카드 UI 클릭 시 상태 변경 & 카드 2개 까지만 선택 이벤트 생성
+6. 선택한 2개의 메모리 검사 카드 색상 일치 여부에 따른 클릭 이벤트 설정
+7. 테스트 완료 처리 및 테스트 완료 시 걸린 시간 측정
+8. 완료한 테스트 결과 DB에 저장
+
+## 기억력 검사 완료 페이지 생성 (2025-03-20 15:50)
+1. MemoryTest/Complete/index.tsx
+2. App.tsx
+3. MemoryTest/Complete/style.css
+4. constants/index.ts
+5. store/memory-test.store.ts
+
+1. 페이지 생성, 컴포넌트 스타일 설정
+2. 경로 설정
+3. DESCRIPTION을 constants/index.ts로 이동 후 MEMORY_DESCRIPTION으로 변경
+4. 기억력 검사 결과 스토어 설정 & 기억력 검사 결과 시간 표시
+5. 기억력 검사 결과 리스트 테이블 생성 & 기억력 검사 결과 데이터 불러오기
