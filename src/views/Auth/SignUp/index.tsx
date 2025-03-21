@@ -229,10 +229,12 @@ export default function SignUp(props: Props) {
       <div className='header'>Memories</div> {/* 헤더 메세지 */}
       <div className='sns-container'> {/* SNS 회원가입 버튼 배치 장소 */}
         <div className='sns-header'>SNS 회원가입</div> {/* SNS 회원가입 헤더 메세지 */}
+        {isSns &&
         <div className='sns-button-box'> {/* SNS 버튼이 수평 정렬이 되지 않을 시 닫는 태그가 바로 옆에 있는지 여부 확인 */}
           <div className='sns-button kakao' onClick={() => onSnsButtonClickHandler('kakao')}></div> {/* 카카오 SNS 회원가입 버튼 */}
           <div className='sns-button naver' onClick={() => onSnsButtonClickHandler('naver')}></div> {/* 네이버 SNS 회원가입 버튼 */}
         </div>
+        }
       </div>
       <div className='divider'></div> {/* 구분선 */}
       <div className='input-container'>
