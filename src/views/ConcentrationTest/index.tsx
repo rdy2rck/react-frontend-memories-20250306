@@ -1,17 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './style.css'
-import { CONCENTRATION_DESCRIPTION } from '../../constants'
+import { ACCESS_TOKEN, CONCENTRATION_DESCRIPTION, CONCENTRATION_TEST_COMPLETE_ABSOLUTE_PATH } from '../../constants'
 import { useConcentrationTestStore } from '../../store';
+import { PostConcentrationRequestDto } from '../../apis/dto/request/test';
+import { postConcentrationRequest } from '../../apis';
+import { useCookies } from 'react-cookie';
+import { ResponseDto } from '../../apis/dto/response';
+import { useNavigate } from 'react-router';
 
-// variable: 전체 시간 //
-const TOTAL_TIME = 60000;
+// variable: 전체 시간 (60초) //
+const TOTAL_TIME = 60 * 1000;
 // variable: 별 표시 시간 (0.25초) //
-const STAR_TIME = 250;
+const STAR_TIME = 400;
 // variable: 별 표시 횟수 //
 const STAR_COUNT = 20;
 
 // component: 집중력 검사 화면 컴포넌트 //
 export default function ConcentrationTest() {
+
+  // state: 클릭 여부 참조 상태 //
+  const clickRef = useRef<boolean>(false);
+
+  // state: cookie 상태 //
+  const [cookies] = useCookies();
 
   // state: 검사 시작 여부 상태 //
   const [isStarted, setStarted] = useState<boolean>(false);
@@ -20,12 +31,34 @@ export default function ConcentrationTest() {
   // state: 별 표시 여부 상태 //
   const [isStarVisible, setStarVisible] = useState<boolean>(false);
   // state: 집중력 검사 결과 상태 //
-  const { measurementScore, errorCount, increaseMeasurementScore, increaseErrorCount } = useConcentrationTestStore();
+  const { measurementScore, errorCount, increaseMeasurementScore, increaseErrorCount, init, reset } = useConcentrationTestStore();
+
+   // variable: access token //
+  const accessToken = cookies[ACCESS_TOKEN];
+
+   // function: 네비게이터 함수 //
+  const navigator = useNavigate();
+
+   // function: post concentration response 처리 함수 //
+  const postConcentrationResponse = (responseBody: ResponseDto | null) => {
+    const message = 
+      !responseBody ? '서버에 문제가 있습니다.' :
+      responseBody.code === 'DBE' ? '서버에 문제가 있습니다.' :
+      responseBody.code === 'AF' ? '인증에 실패했습니다.' : '';
+
+    const isSuccess = responseBody !== null && responseBody.code === 'SU';
+    if (!isSuccess) {
+      alert(message);
+      return;
+    }
+
+    navigator(CONCENTRATION_TEST_COMPLETE_ABSOLUTE_PATH);
+  };
 
   // event handler: 검사 시작 버튼 클릭 이벤트 처리 //
   const onStartClickHandler = () => {
     setStarted(true);
-  }
+  };
 
   // event handler: 아이콘 클릭 버튼 이벤트 처리 //
   const onIconClickHandler = () => {
@@ -33,32 +66,50 @@ export default function ConcentrationTest() {
     if (isStarVisible) {
       increaseMeasurementScore();
       setStarVisible(false);
+      clickRef.current = true;
     }
     else {
       increaseErrorCount();
     }
-  }
+  };
 
   // effect: 검사 시작 상태가 변경될 시 실행할 함수 //
   useEffect(() => {
-    let timer;
-    let starTimer;
+    reset();
+    let interval: NodeJS.Timeout;
     if (isStarted) {
-      timer = setTimeout(() => {
+      init();
+
+      setTimeout(() => {
         setFinish(true);
-        setStarted(false);
-      }, TOTAL_TIME);
+      }, TOTAL_TIME + STAR_TIME);
 
-      const starInterval = setInterval(() => {
+      interval = setInterval(() => {
         setStarVisible(true);
+        clickRef.current = false;
 
-        starTimer = setTimeout(() => {
+        setTimeout(() => {
+          if(!clickRef.current) increaseErrorCount();
           setStarVisible(false);
         }, STAR_TIME);
 
-      }, Math.floor(TOTAL_TIME / STAR_COUNT))
+      }, Math.floor(TOTAL_TIME / STAR_COUNT));
+    }
+
+    return () => {
+      clearInterval(interval);
     }
   }, [isStarted]);
+
+  // effect: 검사 종료 상태가 변경되면 실행할 함수 //
+  useEffect(() => {
+    if (!isFinish || !accessToken) return;
+
+    const requestBody: PostConcentrationRequestDto = {
+      measurementScore, errorCount
+    };
+    postConcentrationRequest(requestBody, accessToken).then(postConcentrationResponse);
+  }, [isFinish]);
 
   // render: 집중력 검사 화면 컴포넌트 렌더링 //
   return (

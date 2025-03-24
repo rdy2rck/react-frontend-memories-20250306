@@ -185,4 +185,8 @@
 - constants/index.ts
 - store/concentration-test.store.ts
 
-### 집중력 검사 완료 페이지 생성
+### 집중력 검사 완료 페이지 생성 (2025-03-24 14:50)
+- views/ConcentrationTest/Complete/index.tsx
+- views/ConcentrationTest/Complete/style.css
+- App.tsx
+- interfaces/concentration-test.interface.ts
