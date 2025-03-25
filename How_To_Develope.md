@@ -201,4 +201,13 @@
 - views/Main/index.tsx
 - views/Main/style.css
 - App.tsx
-- views/UserInfo/index.tsx
+- views/Main/UserInfo/index.tsx
+- views/Main/RecentlyMemory/index.tsx
+- views/Main/RecentlyConcentration/index.tsx
+- components/Modal/index.tsx
+- components/Modal/style.css
+- request/user/index.ts
+- request/user/patch-user-request.dto.ts
+- apis/index.ts
+- hooks/sign-in-user.hook.ts
+- Layout/index.tsx

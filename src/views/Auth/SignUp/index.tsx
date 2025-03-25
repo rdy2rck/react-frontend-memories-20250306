@@ -78,7 +78,7 @@ export default function SignUp(props: Props) {
   const open = useDaumPostcodePopup();
 
   // function: 다음 포스트 코드 완료 처리 함수 //
-  const daumPostCompleteHanlder = (data: Address) => {
+  const daumPostCompleteHandler = (data: Address) => {
     const { address } = data;
     setUserAddress(address);
     setUserAddressMessage('');
@@ -180,7 +180,7 @@ export default function SignUp(props: Props) {
 
   // event handler: 주소 검색 버튼 클릭 이벤트 처리 //
   const onSearchAddressClickHandler = () => {
-    open({ onComplete: daumPostCompleteHanlder });
+    open({ onComplete: daumPostCompleteHandler });
   };
 
   // event handler: sns 로그인 버튼 클릭 이벤트 처리 //
