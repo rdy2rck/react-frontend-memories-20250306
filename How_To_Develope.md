@@ -211,3 +211,16 @@
 - apis/index.ts
 - hooks/sign-in-user.hook.ts
 - Layout/index.tsx
+
+### ChatGPT 연동 기억력 & 집중력 향상 안내 (2025-03-26 14:50)
+- request/openai/get-way.request.dto.ts
+- request/openai/index.ts
+- response/openai/get-way.response.dto.ts
+- response/openai/index.ts
+- dto/index.ts
+- components/Way/index.tsx
+- components/Way/style.css
+- views/Main/RecentlyMemory/index.tsx
+- views/Main/RecentlyConcentration/index.tsx
+
+### 일기에 공감 누르기 & 불러오기 (2025-03-26 17:50)
