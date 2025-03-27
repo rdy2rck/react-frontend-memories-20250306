@@ -223,12 +223,19 @@
 - views/Main/RecentlyMemory/index.tsx
 - views/Main/RecentlyConcentration/index.tsx
 
-### 일기에 공감 누르기 & 불러오기 (2025-03-26 17:50)
+### 일기에 공감 누르기 & 공감 수 표시 (2025-03-26 17:50)
 - response/diary/get-empathy.response.dto.ts
 - response/diary/index.ts
 - apis/index.ts
 - views/Diary/Detail/index.tsx
 
-### 일기에 댓글 달기 (2025-03-27 09:50)
-
-### 일기에 댓글 블러오기 (2025-03-27 11:50)
+### 일기에 댓글 달기 & 조회 (2025-03-27 09:50)
+- App.css
+- views/Diary/Detail/index.tsx
+- views/Diary/Detail/style.css
+- apis/dto/request/diary/index.tsx
+- apis/dto/request/diary/post-comment.request.dto.ts
+- apis/dto/response/diary/get-comment-response.dto.ts
+- apis/dto/response/diary/index.ts
+- apis/index.ts
+- types/interfaces/comment.interface.ts
