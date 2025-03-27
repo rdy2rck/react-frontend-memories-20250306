@@ -42,6 +42,11 @@ body { /* 웹페이지 폰트 설정 */
   opacity: 0.85;
 }
 
+.button.stratch {
+  height: 100%;
+  align-self: stretch;
+}
+
 .button.fullwidth {
   box-sizing : border-box;
   width : 100%;

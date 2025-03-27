@@ -224,3 +224,11 @@
 - views/Main/RecentlyConcentration/index.tsx
 
 ### 일기에 공감 누르기 & 불러오기 (2025-03-26 17:50)
+- response/diary/get-empathy.response.dto.ts
+- response/diary/index.ts
+- apis/index.ts
+- views/Diary/Detail/index.tsx
+
+### 일기에 댓글 달기 (2025-03-27 09:50)
+
+### 일기에 댓글 블러오기 (2025-03-27 11:50)

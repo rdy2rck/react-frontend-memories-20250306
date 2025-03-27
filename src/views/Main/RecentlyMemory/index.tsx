@@ -17,7 +17,7 @@ import {
   Tooltip,
   Legend,
   ChartData,
-  ChartOptions,
+  ChartOptions
 } from 'chart.js';
 
 import { Line } from 'react-chartjs-2';
@@ -106,7 +106,7 @@ export default function RecentlyMemory() {
     getRecentlyMemoryRequest(accessToken).then(getRecentlyMemoryResponse);
   }, []);
 
-  // render: 최근 집중력 검사 컴포넌트 렌더링 //
+  // render: 최근 기억력 검사 컴포넌트 렌더링 //
   return (
     <div className='recently-container'>
       <div className='recently-top'>
@@ -115,12 +115,12 @@ export default function RecentlyMemory() {
           <div className='info-button' onClick={onWayClickHandler}>
             기억력을 높이는 방법<div className='icon' />
           </div>
+          {isModalOpen && 
+          <Modal title='기억력을 높이는 방법' onClose={onWayClickHandler}>
+            <Way type='기억력' />
+          </Modal>
+          }
         </div>
-        {isModalOpen && 
-        <Modal title='기억력을 높이는 방법' onClose={onWayClickHandler}>
-          <Way type='기억력' />
-        </Modal>
-        }
         <div className='button primary middle' onClick={onTestClickHandler}>검사하러가기</div>
       </div>
       <div className='recently-chart-box'>

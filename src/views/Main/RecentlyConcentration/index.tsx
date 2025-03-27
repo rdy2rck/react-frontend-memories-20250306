@@ -17,7 +17,7 @@ import {
   Tooltip,
   Legend,
   ChartData,
-  ChartOptions,
+  ChartOptions
 } from 'chart.js';
 
 import { Line } from 'react-chartjs-2';
@@ -32,10 +32,10 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
-// component: 최근 기억력 검사 컴포넌트 //
+// component: 최근 집중력 검사 컴포넌트 //
 export default function RecentlyConcentration() {
 
   // state: 쿠키 상태 //
@@ -53,7 +53,7 @@ export default function RecentlyConcentration() {
   // variable: 차트 데이터 //
   const chartData: ChartData<'line'> = {
     labels: concentrationTests.map(test => test.testDate),
-    datasets : [
+    datasets: [
       {
         label: '성공 점수',
         data: concentrationTests.map(test => test.measurementScore),
@@ -61,11 +61,11 @@ export default function RecentlyConcentration() {
         backgroundColor: 'rgba(0, 132, 255, 0.5)'
       },
       {
-        label: 'dhfb 점수',
+        label: '오류 점수',
         data: concentrationTests.map(test => test.errorCount),
         borderColor: 'rgba(255, 84, 64, 1)',
         backgroundColor: 'rgba(255, 84, 64, 0.5)'
-      }
+      },
     ]
   };
   
